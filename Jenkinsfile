@@ -8,8 +8,8 @@ pipeline {
         registryCredential = 'dockerhub'
         
     }
-    stages{
-      stages{
+    
+     stages{
         stage('fetch'){
             steps{
                 git branch: 'main' , url:'https://github.com/ptanmay0071/onlinemart-microservices-project.git'
@@ -38,7 +38,7 @@ pipeline {
             steps {
                   
                     sh """
-                      helm upgrade onlinemart onlinemartchart --install --set "onlinemartcharts-frontend.image.client.tag=${BUILD_NUMBER}" --namespace prod
+                      helm upgrade onlinemart onlinemartcharts --install --set "onlinemartcharts-frontend.image.client.tag=${BUILD_NUMBER}" --namespace prod
                       """
                   
                  }  
@@ -65,7 +65,7 @@ pipeline {
             steps {
                   
                     sh """
-                      helm upgrade onlinemart onlinemartchart --install --set "onlinemartcharts-backend.image.books.tag=${BUILD_NUMBER}" --namespace prod
+                      helm upgrade onlinemart onlinemartcharts --install --set "onlinemartcharts-backend.image.books.tag=${BUILD_NUMBER}" --namespace prod
                       """
                   
                  }  
@@ -92,7 +92,7 @@ pipeline {
             steps {
                   
                     sh """
-                      helm upgrade onlinemart onlinemartchart --install --set "onlinemartcharts-backend.image.main.tag=${BUILD_NUMBER}" --namespace prod
+                      helm upgrade onlinemart onlinemartcharts --install --set "onlinemartcharts-backend.image.main.tag=${BUILD_NUMBER}" --namespace prod
                       """
                   
                  }
