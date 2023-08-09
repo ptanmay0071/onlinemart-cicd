@@ -12,7 +12,7 @@ pipeline {
      stages{
         stage('fetch'){
             steps{
-                git branch: 'main' , url:'https://github.com/ptanmay0071/onlinemart-microservices-project.git'
+                git branch: 'main' , url:'https://github.com/ptanmay0071/onlinemart-cicd.git'
             }
         }
         
