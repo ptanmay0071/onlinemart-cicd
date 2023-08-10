@@ -73,7 +73,7 @@ pipeline {
           stage('build main'){
             steps{
                 script {
-                    dockerImage = docker.build( mainRegistry + ":$BUILD_NUMBER", "./nodeapi/")
+                    dockerImage3 = docker.build( mainRegistry + ":$BUILD_NUMBER", "./nodeapi/")
                  }
             }
         }
@@ -81,8 +81,8 @@ pipeline {
             steps{
               script {
                 docker.withRegistry( '', registryCredential ) {
-                  dockerImage.push("$BUILD_NUMBER")
-                  dockerImage.push('latest')
+                  dockerImage3.push("$BUILD_NUMBER")
+                  dockerImage3.push('latest')
                 }
               }
             }
