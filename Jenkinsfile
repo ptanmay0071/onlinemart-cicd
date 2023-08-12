@@ -46,7 +46,7 @@ pipeline {
           stage('build books'){
             steps{
                 script {
-                    dockerImage2 = docker.build( booksRegistry + ":$BUILD_NUMBER", "./javaapi/")
+                    dockerImage = docker.build( booksRegistry + ":$BUILD_NUMBER", "./javaapi/")
                  }
             }
         }
@@ -54,8 +54,8 @@ pipeline {
             steps{
               script {
                 docker.withRegistry( '', registryCredential ) {
-                  dockerImage2.push("$BUILD_NUMBER")
-                  dockerImage2.push('latest')
+                  dockerImage.push("$BUILD_NUMBER")
+                  dockerImage.push('latest')
                 }
               }
             }
@@ -73,7 +73,7 @@ pipeline {
           stage('build main'){
             steps{
                 script {
-                    dockerImage3 = docker.build( mainRegistry + ":$BUILD_NUMBER", "./nodeapi/")
+                    dockerImage = docker.build( mainRegistry + ":$BUILD_NUMBER", "./nodeapi/")
                  }
             }
         }
@@ -81,8 +81,8 @@ pipeline {
             steps{
               script {
                 docker.withRegistry( '', registryCredential ) {
-                  dockerImage3.push("$BUILD_NUMBER")
-                  dockerImage3.push('latest')
+                  dockerImage.push("$BUILD_NUMBER")
+                  dockerImage.push('latest')
                 }
               }
             }
